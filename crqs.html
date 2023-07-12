@@ -1,0 +1,314 @@
+<html>
+<head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  <title>MCDAVE QUALITY CRQS ASSESSMENT-FM-01-MDL-QA</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      
+    }
+    th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-direction: row;
+
+    }
+    button {
+      margin-top: 20px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 20% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 50%;
+    }
+  </style>
+</head>
+<body>
+  <h1>MCDAVE QUALITY CRQS ASSESSMENT-FM-01-MDL-QA</h1>
+
+  <table id="assessmentTable">
+    <thead>
+      <tr>
+        <th colspan="17">MCDAVE QUALITY CRQS ASSESSMENT-FM-01-MDL-QA</th>
+      </tr>
+      <tr>
+        <th>DATE</th>
+        <th>WEEK</th>
+        <th>HOURS</th>
+        <th>BATCH NUMBER</th>
+        <th>ASSESSER</th>
+        <th>BRAND</th>
+        <th>SKU</th>
+        <th>ISSUE DESCRIPTION</th>
+        <th>NUMBER OF SAMPLES</th>
+        <th>COUNT OF ISSUES</th>
+        <th>SCORE</th>
+        <th>TEMPERATURE</th>
+        <th>SPEED</th>
+        <th>PARAMETER</th>
+        <th>PROPERTY</th>
+        <th>ISSUE</th>
+        <th>COMMENT</th>
+      </tr>
+       </thead>
+    <tbody id="assessmentData">
+      <tr>
+        <td><input type="date"></td>
+        <td><input type="number"></td>
+        <td><input type="number"></td>
+        <td><input type="number"></td>
+        <td>
+          <select>
+            <option value="">Select Assesser</option>
+            <option value="Dennis Muasya">Dennis Muasya</option>
+            <option value="Christine Ndinda">Christine Ndinda</option>
+            <option value="Allan Korir">Allan Korir</option>
+            <option value="Christine Mwende">Christine Mwende</option>
+          </select>
+        </td>
+        <td>
+          <select>
+            <option value="">Select Brand</option>
+            <option value="Vim lemon">Vim lemon</option>
+            <option value="Vim pouch">Vim pouch</option>
+            <option value="Vim promo">Vim promo</option>
+            <option value="Vim lavender">Vim lavender</option>
+            <option value="Sunlight lemon">Sunlight lemon</option>
+            <option value="Sunlight lavender">Sunlight lavender</option>
+            <option value="Domestos">Domestos</option>
+            <option value="Zelia handwash">Zelia handwash</option>
+            <option value="Zelia toilet cleaner">Zelia toilet cleaner</option>
+            <option value="Zelia multipurpose">Zelia multipurpose</option>
+            <option value="Zelia dishwashing paste">Zelia dishwashing paste</option>
+            <option value="Zelia bleach">Zelia bleach</option>
+          </select>
+        </td>
+        <td><input type="number"></td>
+        <td>
+          <select>
+            <option value="">Select Issue Description</option>
+            <option value="Major print colour deviation">Major print colour deviation</option>
+            <option value="Blotches">Blotches</option>
+            <option value="Ink lines or fading code">Ink lines or fading code</option>
+            <!-- Add more options as needed -->
+          </select>
+        </td>
+        <td><input type="number"min="1" max="50">samples</td>
+        <td><input type="number" min="1" max="20"></td>
+        <td><input type="number"></td>
+        <td><input type="number"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><textarea rows="4"></textarea></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button onclick="addRow()">Add Row</button>
+  <button onclick="openModal()">Records</button>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span onclick="closeModal()" style="float: right; cursor: pointer;">&times;</span>
+      <h2>Records</h2>
+      <form>
+        <label for="date">DATE</label>
+        <input type="date" id="date"><br>
+        <label for="week">WEEK</label>
+        <input type="number"min="1" max="52" id="week"><br>
+      <label for="hours">HOURS</label>
+<input type="time" min="00:00" max="24:00" step="3600" id="hours"><br>
+        <label for="batchNumber">BATCH NUMBER</label>
+        <input type="number" id="batchNumber"><br>
+        <label for="assesser">ASSESSER</label>
+        <select id="assesser">
+          <option value="">Select Assesser</option>
+          <option value="Dennis Muasya">Dennis Muasya</option>
+          <option value="Christine Ndinda">Christine Ndinda</option>
+          <option value="Allan Korir">Allan Korir</option>
+          <option value="Christine Mwende">Christine Mwende</option>
+        </select><br>
+        <label for="brand">BRAND</label>
+        <select id="brand">
+          <option value="">Select Brand</option>
+          <option value="Vim lemon">Vim lemon</option>
+          <option value="Vim pouch">Vim pouch</option>
+          <option value="Vim promo">Vim promo</option>
+          <option value="Vim lavender">Vim lavender</option>
+          <option value="Sunlight lemon">Sunlight lemon</option>
+          <option value="Sunlight lavender">Sunlight lavender</option>
+          <option value="Domestos">Domestos</option>
+          <option value="Zelia handwash">Zelia handwash</option>
+          <option value="Zelia toilet cleaner">Zelia toilet cleaner</option>
+          <option value="Zelia multipurpose">Zelia multipurpose</option>
+          <option value="Zelia dishwashing paste">Zelia dishwashing paste</option>
+          <option value="Zelia bleach">Zelia bleach</option>
+        </select><br>
+        <label for="sku">SKU</label>
+        <input type="text" id="sku"><br>
+        <label for="numberOfSamples">NUMBER OF SAMPLES</label>
+        <input type="number"min="1" max="50" id="numberOfSamples"><br>
+        <label for="issueDescription">ISSUE DESCRIPTION</label>
+        <select id="issueDescription">
+          <option value="">Select Issue Description</option>
+          <option value="Major print colour deviation">Major print colour deviation</option>
+          <option value="Blotches">Blotches</option>
+          <option value="Ink lines or fading code">Ink lines or fading code</option>
+          <!-- Add more options as needed -->
+        </select><br>
+        <label for="countOfIssues">COUNT OF ISSUES</label>
+        <input type="number" id="countOfIssues" min="0" max="10"><br>
+        <label for="score">SCORE</label>
+        <input type="text" id="score" readonly><br>
+        <label for="temperature">TEMPERATURE</label>
+        <input type="number" id="temperature"><br>
+        <label for="speed">SPEED</label>
+        <input type="number" id="speed"><br>
+        <label for="parameter">PARAMETER</label>
+        <input type="text" id="parameter"><br>
+        <label for="property">PROPERTY</label>
+        <input type="text" id="property"><br>
+        <label for="issue">ISSUE</label>
+        <input type="text" id="issue"><br>
+        <label for="comment">COMMENT</label>
+        <textarea id="comment" rows="4"></textarea><br>
+        <input type="button" value="Save" onclick="saveRecord()">
+        <input type="button" value="Decline" onclick="discardRecord()">
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Function to add a new row to the table
+    function addRow() {
+      var table = document.getElementById("assessmentData");
+      var row = table.insertRow();
+      var cellCount = table.rows[0].cells.length;
+
+      for (var i = 0; i < cellCount; i++) {
+        var cell = row.insertCell();
+        if (i === 8) {
+          // Issue Description column
+          cell.innerHTML = `
+            <select>
+              <option value="">Select Issue Description</option>
+              <option value="Major print colour deviation">Major print colour deviation</option>
+              <option value="Blotches">Blotches</option>
+              <option value="Ink lines or fading code">Ink lines or fading code</option>
+              <!-- Add more options as needed -->
+            </select>
+          `;
+        } else if (i === 9) {
+          // Count of Issues column
+          cell.innerHTML = '<input type="number" min="1" max="10">';
+        } else if (i === 11) {
+          // Score column
+          cell.innerHTML = '<input type="text" readonly>';
+        } else if (i === 16) {
+          // Comment column
+          cell.innerHTML = '<textarea rows="4"></textarea>';
+        } else {
+          cell.innerHTML = '<input type="text">';
+        }
+      }
+    }
+
+    // Function to open the records modal
+    function openModal() {
+      var modal = document.getElementById("modal");
+      modal.style.display = "block";
+    }
+
+    // Function to close the records modal
+    function closeModal() {
+      var modal = document.getElementById("modal");
+      modal.style.display = "none";
+    }
+
+    // Function to save the record
+    function saveRecord() {
+      var date = document.getElementById("date").value;
+      var week = document.getElementById("week").value;
+      var hours = document.getElementById("hours").value;
+      var batchNumber = document.getElementById("batchNumber").value;
+      var assesser = document.getElementById("assesser").value;
+      var brand = document.getElementById("brand").value;
+      var sku = document.getElementById("sku").value;
+      var numberOfSamples = document.getElementById("numberOfSamples").value;
+      var issueDescription = document.getElementById("issueDescription").value;
+      var countOfIssues = document.getElementById("countOfIssues").value;
+      var score = countOfIssues / numberOfSamples;
+      var temperature = document.getElementById("temperature").value;
+      var speed = document.getElementById("speed").value;
+      var parameter = document.getElementById("parameter").value;
+      var property = document.getElementById("property").value;
+      var issue = document.getElementById("issue").value;
+      var comment = document.getElementById("comment").value;
+
+      // Validation
+      if (date.trim() === "" || week.trim() === "" || hours.trim() === "" || batchNumber.trim() === "" ||
+          assesser.trim() === "" || brand.trim() === "" || sku.trim() === "" || numberOfSamples.trim() === "" ||
+          issueDescription.trim() === "" || countOfIssues.trim() === "" || temperature.trim() === "" ||
+          speed.trim() === "" || parameter.trim() === "" || property.trim() === "" || issue.trim() === "" ||
+          comment.trim() === "") {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      // Create a new row in the table with the record data
+      var table = document.getElementById("assessmentData");
+      var row = table.insertRow();
+      var cellCount = table.rows[0].cells.length;
+
+      var cells = [
+        date, week, hours, batchNumber, assesser, brand, sku, numberOfSamples, issueDescription,
+        countOfIssues, score, temperature, speed, parameter, property, issue, comment
+      ];
+
+      for (var i = 0; i < cellCount; i++) {
+        var cell = row.insertCell();
+        cell.innerHTML = cells[i];
+      }
+
+      closeModal();
+      alert("Record saved successfully!");
+    }
+
+    // Function to discard the record
+    function discardRecord() {
+      closeModal();
+      alert("Record discarded");
+    }
+  </script>
+</body>
+</html> 
